@@ -9,15 +9,13 @@ from google.generativeai.types import StopCandidateException
 import traceback
 import re
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta # <-- لاستخدام الوقت والتاريخ
 
 # ---!!! إعدادات وضع الصيانة (تحديد المدة) !!!---
-MAINTENANCE_MODE = True 
-
-# ---!!! حدد مدة الصيانة بالساعات هنا !!!---
+MAINTENANCE_MODE = True
 MAINTENANCE_DURATION_HOURS = 5 
 
-# ---!!! لا تحتاج لتعديل هذا الجزء، سيتم حسابه تلقائيًا !!!---
+
 maintenance_end_time = None
 if MAINTENANCE_MODE:
     # حساب وقت انتهاء الصيانة بناءً على الوقت الحالي والمدة المحددة
@@ -30,29 +28,15 @@ if MAINTENANCE_MODE:
 if MAINTENANCE_MODE and maintenance_end_time: # نتأكد أن وقت الانتهاء تم حسابه
     st.set_page_config(page_title="صيانة | Qurate", page_icon="🛠️")
     st.title("🛠️ عذرًا، كيوري تحت الصيانة الآن 🛠️")
+
+    # ---!!! تعديل هنا: عرض رسالة المدة فقط وإزالة العداد والحلقة !!!---
     st.warning(f"نحن نجري بعض التحسينات! من المتوقع أن نعود خلال {MAINTENANCE_DURATION_HOURS} ساعات تقريبًا.")
+
     # (اختياري) إضافة صورة
     # st.image("your_maintenance_image_url.png", caption="نعود قريبًا...")
 
-    # --- (اختياري) إضافة العد التنازلي (ساعات:دقائق:ثواني) ---
-    placeholder = st.empty() # حاوية لعرض العد التنازلي وتحديثه
-
-    while True: # حلقة لتحديث الوقت باستمرار
-        now = datetime.now()
-        if now < maintenance_end_time:
-            time_left = maintenance_end_time - now
-            total_seconds = int(time_left.total_seconds())
-            if total_seconds < 0: total_seconds = 0 # ضمان عدم عرض قيم سالبة
-
-            hours, remainder = divmod(total_seconds, 3600)
-            minutes, seconds = divmod(remainder, 60)
-
-            countdown_text = f"الوقت المتبقي المقدر: {hours:02d}:{minutes:02d}:{seconds:02d}"
-            placeholder.info(countdown_text)
-            time.sleep(1)
-        else:
-            placeholder.success("أخبار سارة! من المفترض أن الصيانة قد انتهت الآن.")
-            break # الخروج من حلقة while
+    # --- إضافة معلومات تشخيصية بسيطة (اختياري) ---
+    st.caption(f"وضع الصيانة: مُفعّل | ينتهي تقريبًا في: {maintenance_end_time.strftime('%Y-%m-%d %H:%M:%S')} (بتوقيت الخادم)")
 
     # --- إيقاف تنفيذ باقي الكود ---
     st.stop()
