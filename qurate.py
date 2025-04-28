@@ -13,7 +13,7 @@ from datetime import datetime, timedelta # <-- لاستخدام الوقت وا�
 
 # ---!!! إعدادات وضع الصيانة (تحديد المدة) !!!---
 MAINTENANCE_MODE = True
-MAINTENANCE_DURATION_HOURS = 5 
+MAINTENANCE_DURATION_HOURS = 7
 
 
 maintenance_end_time = None
