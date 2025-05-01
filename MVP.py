@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 import time
 
 # --- 1. إعدادات التطبيق الأساسية ---
-PAGE_TITLE = "كيوري | Qiori"; PAGE_ICON = "q.png"; MAINTENANCE_MODE = True
+PAGE_TITLE = "كيوري | Qiori"; PAGE_ICON = "q.png"; MAINTENANCE_MODE = False
 TIME_TEXT_MAINTENANCE = 3; MAINTENANCE_DURATION_HOURS = 7
 DB_PATH = "products_database_final_clean_v3_tags.csv"; GEMINI_MODEL_NAME = "gemini-1.5-flash-latest"
 MAX_EXAMPLE_PRODUCTS = 4; HISTORY_LENGTH = 8; LOGO_PATH = "q.png"
