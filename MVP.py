@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# -*- coding: utf-8 -*-
+
 
 # --- 0. استيراد المكتبات ---
 import streamlit as st
