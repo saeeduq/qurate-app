@@ -18,7 +18,7 @@ import time
 # --- 1. إعدادات التطبيق الأساسية ---
 PAGE_TITLE = "كيوري | Qiori"; PAGE_ICON = "q.png"; MAINTENANCE_MODE = False
 TIME_TEXT_MAINTENANCE = 3; MAINTENANCE_DURATION_HOURS = 7
-DB_PATH = "products_database_final_clean_v3_tags.csv"; GEMINI_MODEL_NAME = "gemini-2.0-flash"
+DB_PATH = "products_database_final_clean_v3_tags.csv"; GEMINI_MODEL_NAME = "gemini-2.5-flash"
 MAX_EXAMPLE_PRODUCTS = 4; HISTORY_LENGTH = 8; LOGO_PATH = "q.png"
 LOADING_MESSAGES = [ "لحظة أفكر لج بأحلى ستايل... ✨", "جاري البحث عن أفكار رهيبة... 🎀", "كيوري تجمع لج الإلهام... 💖", "ثواني وتكون النصيحة جاهزة... 😉", "أدور لج على شي يناسب ذوقج... 👑", "قاعدة أجهز لج رد حلو... ✍️", "بس دقيقة أرتب أفكاري... 🤔", "أكيد حبيبتي، جاري العمل... 💪"]
 
@@ -417,3 +417,4 @@ else:
                  no_ex_txt="\n\n(حاولت أدور لج أمثلة بس للأسف ما لقيت شي متوفر حالياً 😔)"
                  if no_ex_txt not in assistant_msg["text"]: assistant_msg["text"] += no_ex_txt
             st.session_state.chat_history.append({"role": "assistant", "content": assistant_msg}); st.rerun()
+
